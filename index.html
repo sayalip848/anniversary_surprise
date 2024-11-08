@@ -61,7 +61,7 @@
         /* Bubble shape */
         .bubble {
             position: absolute;
-            width: 40px;  /* Decreased size for smaller screens */
+            width: 40px;  /* Default size for larger screens */
             height: 40px;
             background-color: rgba(255, 255, 255, 0.7); /* Light white with some transparency */
             border-radius: 50%; /* Make it circular */
@@ -79,7 +79,7 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Subtle light border */
             animation: twinklingLights 1.5s infinite alternate; /* Apply twinkling effect to the frame */
             z-index: 5; /* To ensure it's above the bubbles */
-            max-width: 90%; /* Increased width for more space on smaller devices */
+            max-width: 80%; /* Limit the width */
             box-sizing: border-box;
         }
 
@@ -123,38 +123,36 @@
 
         /* Media Queries for responsiveness */
         @media (max-width: 768px) {
+            .bubble {
+                width: 30px;  /* Smaller bubble size */
+                height: 30px;
+            }
+
             h1 {
-                font-size: 12vw; /* Larger text for tablets */
+                font-size: 12vw; /* Adjust for tablets */
             }
             p {
-                font-size: 5vw; /* Adjust paragraph font size for tablets */
+                font-size: 5vw; /* Adjust paragraph font size */
             }
             .surprise-link {
                 font-size: 5vw; /* Adjust button size */
             }
-
-            /* Bubble sizes for smaller devices */
-            .bubble {
-                width: 30px;
-                height: 30px;
-            }
         }
 
         @media (max-width: 480px) {
+            .bubble {
+                width: 20px;  /* Even smaller bubble size */
+                height: 20px;
+            }
+
             h1 {
-                font-size: 14vw; /* Larger text on very small devices */
+                font-size: 16vw; /* Large text for small screens */
             }
             p {
-                font-size: 6vw; /* Adjust paragraph font size for very small devices */
+                font-size: 6vw; /* Adjust paragraph font size */
             }
             .surprise-link {
                 font-size: 6vw; /* Adjust button size */
-            }
-
-            /* Smaller bubbles for very small devices */
-            .bubble {
-                width: 25px;
-                height: 25px;
             }
         }
     </style>
@@ -202,4 +200,9 @@
             }
         }
 
-        // Create a random number of bubbles (let's start with 
+        // Create a random number of bubbles (let's start with 30)
+        createRandomBubbles(30);
+    </script>
+
+</body>
+</html>
