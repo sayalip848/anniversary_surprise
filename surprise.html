@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Slideshow for Husband</title>
+    <style>
+        /* Basic body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            cursor: pointer;
+            transition: background-color 1s ease-in-out;
+        }
+
+        /* Full-screen slideshow container */
+        .slideshow-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Common styling for slides */
+        .mySlides {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 105%;
+            object-fit: cover;
+            opacity: 0;  /* Start with invisible slide */
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        /* Text captions */
+        .caption-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 32px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        /* Simple fade-in effect for each slide */
+        .fade-in {
+            opacity: 1; /* Fade-in effect */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <!-- Slide 1 -->
+    <div class="mySlides fade-in">
+        <img src="images_video/image1.jpg" alt="Image 1">
+        <div class="caption-text">Our First Adventure Together</div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="mySlides fade-in">
+        <img src="images_video/image2.jpg" alt="Image 2">
+        <div class="caption-text">The Moments We Cherish</div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="mySlides fade-in">
+        <img src="images_video/image3.jpg" alt="Image 3">
+        <div class="caption-text">Forever Us</div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="mySlides fade-in">
+        <img src="images_video/image4.jpg" alt="Image 4">
+        <div class="caption-text">Love Always Wins</div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="mySlides fade-in">
+        <img src="images_video/image5.jpg" alt="Image 4">
+        <div class="caption-text">Love Always Wins</div>
+    </div>
+
+    <!-- Audio -->
+    <audio id="background-audio" loop>
+        <source src="images_video/song.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+</div>
+
+<!-- JavaScript for enhanced slideshow -->
+<script>
+    let slideIndex = 0;
+
+    // Start playing background audio when user clicks anywhere
+    document.body.addEventListener('click', function() {
+        const audio = document.getElementById("background-audio");
+        audio.play().then(function() {
+            console.log("Audio is playing.");
+        }).catch(function(error) {
+            console.error("Error playing audio: ", error);
+            alert("Sorry, there was an issue with playing the audio.");
+        });
+
+        // Reveal the surprise message after first click
+        const surpriseMessage = document.querySelector(".surprise-message");
+        surpriseMessage.style.opacity = 1; // Fade in surprise message
+    });
+
+    // Function to show the slides with a fade-in effect
+    function showSlides() {
+        let slides = document.getElementsByClassName("mySlides");
+        let captions = document.getElementsByClassName("caption-text");
+
+        // Hide all slides and reset opacity
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            captions[i].style.opacity = 0;
+            slides[i].style.opacity = 0;
+        }
+
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1; // Reset to first slide
+        }
+
+        // Show the current slide with fade-in effect
+        slides[slideIndex - 1].style.display = "block";
+        captions[slideIndex - 1].style.opacity = 1; // Fade in caption
+        slides[slideIndex - 1].style.opacity = 1; // Fade in image
+
+        // Change the slide every 5 seconds
+        setTimeout(showSlides, 5000);
+    }
+
+    // Start the slideshow
+    showSlides();
+</script>
+
+</body>
+</html>

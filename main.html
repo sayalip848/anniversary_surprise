@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary</title>
+    <style>
+        /* Basic body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #D3A6FF; /* Light purple background */
+            color: #FFFFFF; /* White text for good contrast */
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative; /* To contain the bubbles */
+            overflow: hidden; /* Prevent bubbles from overflowing */
+            animation: background-color-change 5s infinite alternate; /* Animate background color for more festivity */
+        }
+
+        /* Frame of lights animation */
+        @keyframes twinklingLights {
+            0% {
+                box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 0 25px 10px rgba(255, 255, 255, 0.3);
+            }
+            25% {
+                box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7), 0 0 40px 15px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 35px 15px rgba(255, 255, 255, 1), 0 0 50px 20px rgba(255, 255, 255, 0.6);
+            }
+            75% {
+                box-shadow: 0 0 30px 12px rgba(255, 255, 255, 0.8), 0 0 40px 18px rgba(255, 255, 255, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 40px 18px rgba(255, 255, 255, 1), 0 0 55px 22px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* Bubble animation styles */
+        @keyframes bubble-float {
+            0% {
+                transform: scale(0.5) translateY(100%) translateX(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) translateY(-150px) translateX(50px); /* Move upwards and sideways */
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5) translateY(-300px) translateX(-50px); /* Continue upwards with random horizontal movement */
+                opacity: 0;
+            }
+        }
+
+        /* Bubble shape */
+        .bubble {
+            position: absolute; /* Use absolute positioning */
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.7); /* Light white with some transparency */
+            border-radius: 50%; /* Make it circular */
+            animation: bubble-float 10s ease-in-out infinite;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Glow effect */
+        }
+
+        /* Content container (frame of lights) */
+        .content-container {
+            position: relative;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly translucent background */
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Subtle light border */
+            animation: twinklingLights 1.5s infinite alternate; /* Apply twinkling effect to the frame */
+            z-index: 5; /* To ensure it's above the bubbles */
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #6A2E7B; /* A deeper purple for the heading */
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #4C2D91; /* A medium purple for paragraphs */
+        }
+
+        /* Link button styling */
+        .surprise-link {
+            background-color: #F8A5C2; /* Soft pink button */
+            color: white;
+            font-size: 24px;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .surprise-link:hover {
+            background-color: #F78FB3; /* Slightly darker pink on hover */
+        }
+
+        /* Footer note styling */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 16px;
+            color: #A16AC3; /* Lighter purple for footer text */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        <h1>Happy Anniversary, My Love!</h1>
+        <p>Our journey together has been nothing short of amazing. You make every day special, and I am so thankful for you.</p>
+        <p>Click below for a special surprise just for you!</p>
+
+        <a href="surprise.html" class="surprise-link">Click Here for a Surprise!</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024. All rights reserved. ❤️</p>
+    </footer>
+
+    <!-- The bubbles will be created dynamically with JavaScript below -->
+    <script>
+        // Function to create random bubbles
+        function createRandomBubbles(numBubbles) {
+            for (let i = 0; i < numBubbles; i++) {
+                let bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+
+                // Set random left position (between 0% and 100%)
+                let randomLeft = Math.random() * 100;
+                bubble.style.left = `${randomLeft}%`;
+
+                // Set random vertical position (between 100% and 90% for a slight variation)
+                let randomBottom = Math.random() * 100;
+                bubble.style.bottom = `${randomBottom}%`;
+
+                // Randomize animation duration between 8s to 16s
+                let randomDuration = Math.random() * 8 + 8;  // Between 8s and 16s
+                bubble.style.animationDuration = `${randomDuration}s`;
+
+                // Randomize animation delay between 0s and 5s
+                let randomDelay = Math.random() * 5;
+                bubble.style.animationDelay = `${randomDelay}s`;
+
+                // Append the bubble to the body
+                document.body.appendChild(bubble);
+            }
+        }
+
+        // Create a random number of bubbles (let's start with 30)
+        createRandomBubbles(30);
+    </script>
+
+</body>
+</html>
