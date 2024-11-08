@@ -18,9 +18,28 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            position: relative;
+            position: relative; /* To contain the bubbles */
             overflow: hidden; /* Prevent bubbles from overflowing */
             animation: background-color-change 5s infinite alternate; /* Animate background color for more festivity */
+        }
+
+        /* Frame of lights animation */
+        @keyframes twinklingLights {
+            0% {
+                box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5), 0 0 25px 10px rgba(255, 255, 255, 0.3);
+            }
+            25% {
+                box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.7), 0 0 40px 15px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 35px 15px rgba(255, 255, 255, 1), 0 0 50px 20px rgba(255, 255, 255, 0.6);
+            }
+            75% {
+                box-shadow: 0 0 30px 12px rgba(255, 255, 255, 0.8), 0 0 40px 18px rgba(255, 255, 255, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 40px 18px rgba(255, 255, 255, 1), 0 0 55px 22px rgba(255, 255, 255, 0.5);
+            }
         }
 
         /* Bubble animation styles */
@@ -41,9 +60,9 @@
 
         /* Bubble shape */
         .bubble {
-            position: absolute;
-            width: 40px;
-            height: 40px;
+            position: absolute; /* Use absolute positioning */
+            width: 50px;
+            height: 50px;
             background-color: rgba(255, 255, 255, 0.7); /* Light white with some transparency */
             border-radius: 50%; /* Make it circular */
             animation: bubble-float 10s ease-in-out infinite;
@@ -54,34 +73,32 @@
         /* Content container (frame of lights) */
         .content-container {
             position: relative;
-            padding: 10vw; /* Responsive padding for larger screens */
+            padding: 5%; /* Responsive padding for larger screens */
             background-color: rgba(255, 255, 255, 0.1); /* Slightly translucent background */
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Subtle light border */
             z-index: 5; /* To ensure it's above the bubbles */
-            max-width: 80%;
+            max-width: 90%; /* Increase max-width for better utilization of space on large screens */
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 0 auto; /* Ensure it centers */
+            margin: 0 auto; /* Center content horizontally */
         }
 
         /* Heading styling */
         h1 {
-            font-size: 6vw; /* Responsive font size */
-            margin-bottom: 15px;
+            font-size: 8vw; /* Responsive font size */
+            margin-bottom: 10px;
             color: #6A2E7B; /* A deeper purple for the heading */
-            line-height: 1.2; /* Better line spacing */
         }
 
         /* Paragraph styling */
         p {
-            font-size: 3.5vw; /* Responsive font size */
+            font-size: 4vw; /* Responsive font size */
             margin: 10px 0;
             color: #4C2D91; /* A medium purple for paragraphs */
-            line-height: 1.4; /* Improve readability */
         }
 
         /* Link button styling */
@@ -89,7 +106,7 @@
             background-color: #F8A5C2; /* Soft pink button */
             color: white;
             font-size: 4vw; /* Responsive font size */
-            padding: 15px 30px;
+            padding: 10px 30px;
             text-decoration: none;
             border-radius: 8px;
             cursor: pointer;
@@ -110,16 +127,15 @@
 
         /* Media Queries for responsiveness */
         @media (max-width: 768px) {
-            .bubble {
-                width: 30px;  /* Smaller bubble size */
-                height: 30px;
+            .content-container {
+                padding: 8%; /* Adjust padding for smaller tablets and mobile */
+                max-width: 85%; /* Slightly smaller max-width */
             }
-
             h1 {
-                font-size: 10vw; /* Adjust for tablets */
+                font-size: 10vw; /* Larger text for smaller devices */
             }
             p {
-                font-size: 5vw; /* Adjust paragraph font size */
+                font-size: 5vw; /* Adjust paragraph font size for smaller devices */
             }
             .surprise-link {
                 font-size: 5vw; /* Adjust button size */
@@ -127,16 +143,15 @@
         }
 
         @media (max-width: 480px) {
-            .bubble {
-                width: 20px;  /* Even smaller bubble size */
-                height: 20px;
+            .content-container {
+                padding: 10%; /* Increase padding for very small screens to ensure readability */
+                max-width: 95%; /* Max-width close to 100% for mobile */
             }
-
             h1 {
-                font-size: 12vw; /* Large text for small screens */
+                font-size: 12vw; /* Larger text on very small devices */
             }
             p {
-                font-size: 6vw; /* Adjust paragraph font size */
+                font-size: 6vw; /* Adjust paragraph font size for very small devices */
             }
             .surprise-link {
                 font-size: 6vw; /* Adjust button size */
@@ -147,18 +162,18 @@
 <body>
 
     <div class="content-container">
-        <h2>Happy Anniversary, My Love!</h2>
+        <h1>Happy Anniversary, My Love!</h1>
         <p>Our journey together has been nothing short of amazing. You make every day special, and I am so thankful for you.</p>
         <p>Click below for a special surprise just for you!</p>
 
-
-        <a href="surprise.html" class="surprise-link">Click Here</a>
+        <a href="surprise.html" class="surprise-link">Click Here for a Surprise!</a>
     </div>
 
     <footer>
         <p>&copy; 2024. All rights reserved. ❤️</p>
     </footer>
 
+    <!-- The bubbles will be created dynamically with JavaScript below -->
     <script>
         // Function to create random bubbles
         function createRandomBubbles(numBubbles) {
