@@ -24,12 +24,12 @@
         /* Full-screen slideshow container */
         .slideshow-container {
             position: relative;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         /* Common styling for slides */
@@ -37,8 +37,8 @@
             display: none;
             position: absolute;
             width: 100%;
-            height: 105%;
-            object-fit: cover;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the container */
             opacity: 0;  /* Start with invisible slide */
             transition: opacity 1.5s ease-in-out;
         }
@@ -48,7 +48,7 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            font-size: 32px;
+            font-size: 3vw; /* Make text size responsive */
             color: white;
             background-color: rgba(0, 0, 0, 0.5);
             padding: 15px;
@@ -60,6 +60,21 @@
         /* Simple fade-in effect for each slide */
         .fade-in {
             opacity: 1; /* Fade-in effect */
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 768px) {
+            .caption-text {
+                font-size: 5vw; /* Smaller text on mobile */
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .caption-text {
+                font-size: 6vw; /* Even smaller text on very small devices */
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -81,7 +96,7 @@
 
     <!-- Slide 3 -->
     <div class="mySlides fade-in">
-        <img src="./image1.jpg" alt="Image 3">
+        <img src="./image3.jpg" alt="Image 3">
         <div class="caption-text">Forever Us</div>
     </div>
 
@@ -93,8 +108,8 @@
 
     <!-- Slide 5 -->
     <div class="mySlides fade-in">
-        <img src="./image5.jpg" alt="Image 4">
-        <div class="caption-text">Love Always Wins</div>
+        <img src="./image5.jpg" alt="Image 5">
+        <div class="caption-text">Our Forever</div>
     </div>
 
     <!-- Audio -->
